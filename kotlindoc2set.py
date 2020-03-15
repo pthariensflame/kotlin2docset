@@ -15,7 +15,7 @@ def setup_directories(local_path: str):
 
 def mirror_website(url: str, local_path: str):
     call([
-        'wget',
+        'wget2',
         '--mirror',
         '--convert-links',
         '--adjust-extension',
@@ -24,7 +24,8 @@ def mirror_website(url: str, local_path: str):
         '--no-host-directories',
         '--directory-prefix', local_path,
         '--quiet',
-        '--show-progress',
+        '--progress', 'bar',
+        '--force-progress',
         url
     ])
 
