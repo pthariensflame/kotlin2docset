@@ -82,7 +82,7 @@ def parse_file(cursor: sqlite3.Cursor, file_path: str):
                 code_type = parse_code_type(signature.text.strip())
                 name_dom = soup.find('div', attrs={'class': 'api-docs-breadcrumbs'})
                 name = '.'.join(map(lambda string: string.strip(), name_dom.text.split('/')[2::]))
-                path = file_path.replace('kotlin.docset/Contents/Resources/Documents/', '')
+                path = file_path.replace(DOCUMENT_PATH, '')
                 if code_type is not None and name:
                     insert_into_index(cursor, name, code_type, path)
                     print('%s -> %s -> %s' % (name, code_type, path))
